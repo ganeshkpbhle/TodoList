@@ -1,0 +1,177 @@
+input[type=checkbox] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    display: none;
+}
+
+input[type=checkbox]+label {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 24px;
+    height: 24px;
+    background: #bbddbb;
+    border-radius: 100%;
+    cursor: pointer;
+    box-shadow: inset #bbddbb 0 0 0 2px, inset white 0 0 0 4px;
+    transition: box-shadow 0.1s ease-out;
+}
+
+input[type=checkbox]+label:before {
+    width: 0;
+    height: 0;
+}
+
+input[type=checkbox]+label:after {
+    opacity: 0;
+    content: "";
+    position: absolute;
+    top: -2px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 3px;
+    height: 8px;
+    border-right: 3px solid white;
+    transform: rotate(90deg);
+    transition: opacity 0.2s ease-out;
+}
+
+input[type=checkbox]+label:hover {
+    box-shadow: inset #88c388 0 0 0 12px, inset white 0 0 0 12px;
+}
+
+input[type=checkbox]+label:hover:after {
+    opacity: 1;
+}
+
+input[type=checkbox]:checked+label {
+    background: transparent;
+    box-shadow: none;
+    -webkit-animation: bounce 0.4s linear;
+    animation: bounce 0.4s linear;
+}
+
+input[type=checkbox]:checked+label:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    background: #66b266;
+    border-radius: 100%;
+}
+
+input[type=checkbox]:checked+label:after {
+    opacity: 1;
+    border-bottom: 3px solid white;
+    transform: rotate(45deg);
+    width: 30%;
+    height: 40%;
+}
+
+ul {
+    margin: 0 0 24px;
+    border-top: 1px solid #ededed;
+}
+
+ul li {
+    color: #c1c8c1;
+    position: relative;
+    padding: 16px 24px 16px 0;
+    background: white;
+    border-bottom: 1px solid #ededed;
+    transition: color 0.1s ease-out;
+    color: rgb(102, 100, 100);
+}
+
+ul li span {
+    display: block;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: rgb(156, 156, 156);
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(0.8);
+    }
+    25% {
+        transform: scale(1.4);
+    }
+    50% {
+        transform: scale(0.9);
+    }
+    75% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.Fade,
+.Fade span {
+    transition: 0.2s ease-out;
+}
+
+.Fade.all-complete,
+.Fade span.all-complete {
+    transition-delay: 0.3s;
+}
+
+.Fade.ng-enter,
+.Fade span.ng-enter {
+    opacity: 0;
+    transform: translateX(-24px);
+}
+
+.Fade.ng-enter.ng-enter-active,
+.Fade span.ng-enter.ng-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.Fade.ng-leave,
+.Fade span.ng-leave {
+    opacity: 1;
+}
+
+.Fade.ng-leave span,
+.Fade span.ng-leave span {
+    transform: translateX(0);
+}
+
+.Fade.ng-leave.ng-leave-active,
+.Fade span.ng-leave.ng-leave-active {
+    opacity: 0;
+}
+
+.Fade.ng-leave.ng-leave-active span,
+.Fade span.ng-leave.ng-leave-active span {
+    transform: translateX(24px);
+}
+
+.Fade.ng-hide,
+.Fade span.ng-hide {
+    opacity: 0;
+    transition: 0s;
+}
+
+.Fade.ng-show,
+.Fade span.ng-show {
+    opacity: 1;
+}

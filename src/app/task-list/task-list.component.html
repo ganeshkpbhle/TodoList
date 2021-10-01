@@ -1,0 +1,11 @@
+<div *ngIf="Items.length > 0">
+    <ul>
+        <li class="Fade" *ngFor="let item of Items;let i = index;" [ngClass]="{'completed':item.complete}">
+            <span>{{item.title}}
+                <input type="checkbox" (change)="triggerCheck(i)" [attr.id]="i" [checked]="item.complete"/>
+                <label [attr.for]="i"></label>
+            </span>
+        </li>
+    </ul>
+    <p class="Fade all-complete" ng-show="Items.length===0">All tasks have been completed.</p>
+</div>
