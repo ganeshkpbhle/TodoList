@@ -1,14 +1,19 @@
 import { Component } from '@angular/core';
 import { Dataset } from './model';
+import {FormControl,FormGroup,Validators} from "@angular/forms";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  textForm:FormGroup;
   title = 'todoTask';
-  task="";
-  btnDisable:boolean=true;
+  constructor(){
+    this.textForm=new FormGroup({
+      'text':new FormControl("",Validators.required),
+    });
+  }
   Items:Array<Dataset>=[
     {
       title : "A default item",
@@ -29,21 +34,16 @@ clear=()=>{
   for (let index = arr.length-1; index>=0; index--) {
     this.Items.splice(arr[index],1);
   }
+  
 }
 addTask=()=>{
   this.Items.push({
-    title:this.task,
+    title:this.textForm.controls['text'].value,
     complete:false
   });
-  this.task="";
-  this.btnDisable=true;
-}
-enableBtn=()=>{
-  if(this.task.length>0 && this.task[0]!==" ")
-  {this.btnDisable=false;}
-  else{
-    this.btnDisable=true;
-  }
+  this.textForm.patchValue({
+    text:" "
+  });
 }
 checkVal=(index:number)=>{
   this.Items[index].complete=!this.Items[index].complete;

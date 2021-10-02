@@ -10,10 +10,10 @@
 </nav>
 <section>
     <div class="block-custom">
-        <form>
+        <form [formGroup]="textForm">
             <div>
-                <input placeholder="Add a new task" name="taskname" [(ngModel)]="task" (input)="enableBtn()">
-                <button class="btn btn-primary" [disabled]="btnDisable" (click)="addTask()">Add Task</button>
+                <input placeholder="Add a new task" name="taskname" formControlName="text">
+                <button class="btn btn-primary" [disabled]="!textForm.valid" (click)="addTask()">Add Task</button>
             </div>
         </form>
         <app-task-list [Items]="Items" (checkEvent)="checkVal($event)"></app-task-list>
